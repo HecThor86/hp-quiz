@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Conocimientos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .result {
+            font-size: 18px;
+            color: green;
+            margin-top: 20px;
+        }
+        .error {
+            font-size: 18px;
+            color: red;
+            margin-top: 20px;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz de Conocimientos</h1>
+        <form id="quizForm">
+            <div>
+                <p>1. ¿Cuál es el planeta más cercano al Sol?</p>
+                <label><input type="radio" name="q1" value="A"> A) Marte</label><br>
+                <label><input type="radio" name="q1" value="B"> B) Venus</label><br>
+                <label><input type="radio" name="q1" value="C"> C) Mercurio</label>
+            </div>
+            <div>
+                <p>2. ¿En qué año comenzó la Segunda Guerra Mundial?</p>
+                <label><input type="radio" name="q2" value="A"> A) 1939</label><br>
+                <label><input type="radio" name="q2" value="B"> B) 1945</label><br>
+                <label><input type="radio" name="q2" value="C"> C) 1914</label>
+            </div>
+            <div>
+                <p>3. ¿Qué elemento químico tiene el símbolo O?</p>
+                <label><input type="radio" name="q3" value="A"> A) Oro</label><br>
+                <label><input type="radio" name="q3" value="B"> B) Oxígeno</label><br>
+                <label><input type="radio" name="q3" value="C"> C) Osmio</label>
+            </div>
+            <div>
+                <p>4. ¿Cuál es el idioma más hablado en el mundo?</p>
+                <label><input type="radio" name="q4" value="A"> A) Inglés</label><br>
+                <label><input type="radio" name="q4" value="B"> B) Mandarín</label><br>
+                <label><input type="radio" name="q4" value="C"> C) Español</label>
+            </div>
+            <div>
+                <p>5. ¿Qué inventor es famoso por la bombilla?</p>
+                <label><input type="radio" name="q5" value="A"> A) Nikola Tesla</label><br>
+                <label><input type="radio" name="q5" value="B"> B) Thomas Edison</label><br>
+                <label><input type="radio" name="q5" value="C"> C) Alexander Graham Bell</label>
+            </div>
+            <button type="button" onclick="checkAnswers()">Enviar</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        function checkAnswers() {
+            const correctAnswers = {
+                q1: "C",
+                q2: "A",
+                q3: "B",
+                q4: "B",
+                q5: "B"
+            };
+            const form = document.getElementById("quizForm");
+            let allCorrect = true;
+
+            for (const [question, correctAnswer] of Object.entries(correctAnswers)) {
+                const selected = form[question].value;
+                if (selected !== correctAnswer) {
+                    allCorrect = false;
+                    break;
+                }
+            }
+
+            const resultDiv = document.getElementById("result");
+            if (allCorrect) {
+                resultDiv.innerHTML = `
+                    <p class="result">¡Felicidades! Todas tus respuestas son correctas.</p>
+                    <img src="https://drive.google.com/file/d/1jB0ARFcvWnluiRkyuoUy_vxGB4jyb-UH/view?usp=sharing" alt="Imagen de éxito">
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <p class="error">Algunas respuestas son incorrectas. Intenta nuevamente.</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
