@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter Quiz</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lozano Experience Quiz</title>
+<style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -128,99 +129,164 @@
             height: auto;
             margin-bottom: 20px;
         }
-    </style>
-</head>
-<body>
-    <!-- Pantalla de Introducción -->
-    <div id="intro" class="active">
-        <img src="logo.png" alt="Imagen de Introducción">
-        <h1>Felicidades Eva!</h1><p>Desde Lozano experience queremos acompañarte en este día tan especial para ti. Sabemos lo que te encanta jugar y nosotros queremos jugar contigo. Te proponemos un reto y si lo superas, puede que tengas algún premio! Suerte!</p>
-        <p>Pon a prueba tus conocimientos sobre el mundo mágico.</p>
-        <button class="btn" onclick="startQuiz()">Comenzar</button>
-    </div>
-
-    <!-- Quiz -->
-    <div id="quiz">
-
-        <!-- Botón para volver a la introducción -->
-        <button class="btn" onclick="goToIntro()">Volver a la Introducción</button>
-        <!-- Botón para volver a las preguntas -->
-        <button class="btn" onclick="goToQuiz()">Volver a las Preguntas</button>
-
-        <h1>Harry Potter Quiz</h1>
-        <div class="question">
-            <p><strong>1. ¿Cuál es el patronus de Harry Potter?</strong></p>
-            <input type="radio" name="q1" value="incorrecto"> Un lobo<br>
-            <input type="radio" name="q1" value="incorrecto"> Un zorro<br>
-            <input type="radio" name="q1" value="correcto"> Un ciervo<br>
-            <input type="radio" name="q1" value="incorrecto"> Un águila<br>
-        </div>
-        <div class="question">
-            <p><strong>2. ¿Cómo se llama el banco mágico de los magos?</strong></p>
-            <input type="radio" name="q2" value="incorrecto"> Ollivanders<br>
-            <input type="radio" name="q2" value="correcto"> Gringotts<br>
-            <input type="radio" name="q2" value="incorrecto"> Honeydukes<br>
-            <input type="radio" name="q2" value="incorrecto"> Hogwarts<br>
-        </div>
-        <div class="question">
-            <p><strong>3. ¿Cómo se llama el mapa que muestra a las personas en Hogwarts?</strong></p>
-            <input type="radio" name="q3" value="correcto"> El Mapa del Merodeador<br>
-            <input type="radio" name="q3" value="incorrecto"> El Diario de Tom Riddle<br>
-            <input type="radio" name="q3" value="incorrecto"> El Espejo de Oesed<br>
-            <input type="radio" name="q3" value="incorrecto"> La Piedra Filosofal<br>
-        </div>
-        <button class="btn" onclick="checkAnswers()">Enviar respuestas</button>
-    </div>
-
-    <!-- Mensaje Final -->
-    <div id="result">
-
-        <!-- Botón para volver a la introducción -->
-        <button class="btn" onclick="goToIntro()">Volver a la Introducción</button>
-        <!-- Botón para volver a las preguntas -->
-        <button class="btn" onclick="goToQuiz()">Volver a las Preguntas</button>
-
-        <h2>Zorionak Evitxu!</h2><p>Ahi va la hostia, que manera de acertar pues! Te invitamos a un fin de semana por Bilbao y alrededores (algunos los llaman España) para que puedas disfrutar de nuestro turismo y sobre todo del pintxopote!</p>
-        <img src="wp_er.png" alt="Premio">
-    </div>
-
-    <script>
-        // Función para iniciar el quiz
-        function startQuiz() {
-            document.getElementById('intro').classList.remove('active');
-            document.getElementById('quiz').classList.add('active');
-        }
-
-        // Función para verificar respuestas
-        function checkAnswers() {
-            const answers = document.querySelectorAll('input[type="radio"]:checked');
-            if (answers.length < 3) {
-                alert("Por favor, responde a todas las preguntas.");
-                return;
-            }
-            const correctAnswers = Array.from(answers).filter(input => input.value === "correcto");
-            if (correctAnswers.length === 3) {
-                document.getElementById("quiz").classList.remove("active");
-                document.getElementById("result").classList.add("active");
-            } else {
-                alert("Algunas respuestas son incorrectas. Inténtalo de nuevo.");
-            }
-        }
     
-        // Función para volver a la introducción
-        function goToIntro() {
-            document.getElementById('quiz').classList.remove('active');
-            document.getElementById('result').classList.remove('active');
-            document.getElementById('intro').classList.add('active');
-        }
-        
-        // Función para volver a las preguntas
-        function goToQuiz() {
-            document.getElementById('intro').classList.remove('active');
-            document.getElementById('result').classList.remove('active');
-            document.getElementById('quiz').classList.add('active');
-        }
+#notAnswered, #wrongAnswer {
+    display: none;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background: linear-gradient(135deg, #ff5252, #ff1744);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 5px solid #ffca28;
+    color: #4b0082;
+}
+#notAnswered p, #wrongAnswer p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+#notAnswered img, #wrongAnswer img {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body style="margin: 0; padding: 0; height: auto; overflow-y: auto;">
+<!-- Pantalla de Introducción -->
+<div class="active" id="intro" style="max-height: none; overflow-y: visible;">
+<img alt="Imagen de Introducción" src="logo.png"/>
+<h1>Felicidades Eva!</h1><p>Desde Lozano experience queremos acompañarte en este día tan especial para ti. Sabemos lo que te encanta jugar y nosotros queremos jugar contigo. Te proponemos un reto y si lo superas, puede que tengas algún premio! Suerte!</p>
+<p>Pon a prueba tus conocimientos sobre el mundo mágico.</p>
+<button class="btn" onclick="startQuiz()">Comenzar</button>
+</div>
+<!-- Quiz -->
+<div id="quiz" style="max-height: none; overflow-y: visible;">
+<div class="question">
+<p><strong>1. ¿Cuál es la mejor casa de Howgarts?</strong></p>
+<input name="q1" type="radio" value="incorrecto"/> Gryffindor<br/>
+<input name="q1" type="radio" value="incorrecto"/> Slytherin<br/>
+<input name="q1" type="radio" value="correcto"/> Ravenclaw<br/>
+<input name="q1" type="radio" value="incorrecto"/> Hufflepuff<br/>
+</div>
+<div class="question">
+<p><strong>2. ¿Cuál es la canción favorita de tu novio?</strong></p>
+<input name="q2" type="radio" value="incorrecto"/> ¿Quién maneja mi barca?<br/>
+<input name="q2" type="radio" value="incorrecto"/> Si yo tuviera una escoba<br/>
+<input name="q2" type="radio" value="correcto"/> Numb<br/>
+<input name="q2" type="radio" value="incorrecto"/> Baby Shark<br/>
+</div>
+<div class="question">
+<p><strong>3. ¿Cómo te definirías</strong></p>
+<input name="q3" type="radio" value="incorrecto"/> Imbécil<br/>
+<input name="q3" type="radio" value="incorrecto"/> Flipada<br/>
+<input name="q3" type="radio" value="incorrecto"/> Fucking crack<br/>
+<input name="q3" type="radio" value="correcto"/> Gilipollas<br/>
+</div>
+<div class="question">
+<p><strong>4. ¿Cuántos Legos más caben en casa?</strong></p>
+<input name="q4" type="radio" value="incorrecto"/> 2<br/>
+<input name="q4" type="radio" value="incorrecto"/> 35<br/>
+<input name="q4" type="radio" value="correcto"/> ¡No tenemos sitio!<br/>
+<input name="q4" type="radio" value="incorrecto"/> 17<br/>
+</div>
+<div class="question">
+<p><strong>5. ¿Qué temperatura hacía en el concierto de Grande Amore?</strong></p>
+<input name="q5" type="radio" value="correcto"/> 36ºC<br/>
+<input name="q5" type="radio" value="incorrecto"/> 38ºC<br/>
+<input name="q5" type="radio" value="incorrecto"/> 34ºC<br/>
+<input name="q5" type="radio" value="incorrecto"/> La misma que en el sol<br/>
+</div>
+<div class="question">
+<p><strong>6. ¿Cuál es tu pueblo favorito de Burgos?</strong></p>
+<input name="q6" type="radio" value="incorrecto"/> Madrigalejo del Monte<br/>
+<input name="q6" type="radio" value="incorrecto"/> Cubillo del Campo<br/>
+<input name="q6" type="radio" value="incorrecto"/> Castrillo Matajudíos<br/>
+<input name="q6" type="radio" value="correcto"/> Melgar de Fernamental<br/>
+</div><button class="btn" onclick="checkAnswers()" style="display: block; margin: 10px auto;">Enviar respuestas</button><button class="btn" onclick="goToQuiz()" style="display: block; margin: 10px auto;">Volver a las Preguntas</button><button class="btn" onclick="goToIntro()" style="display: block; margin: 10px auto;">Volver a la Introducción</button>
+<!-- Botón para volver a la introducción -->
+<!-- Botón para volver a las preguntas -->
+</div>
+<!-- Mensaje Final -->
+<div id="result" style="max-height: none; overflow-y: visible;">
+<!-- Botón para volver a la introducción -->
+<button class="btn" onclick="goToIntro()">Volver a la Introducción</button>
+<!-- Botón para volver a las preguntas -->
+<button class="btn" onclick="goToQuiz()">Volver a las Preguntas</button>
+<h2>Zorionak Evitxu!</h2><p>Ahi va la hostia, que manera de acertar pues! Te invitamos a un fin de semana por Bilbao y alrededores (algunos los llaman España) para que puedas disfrutar de nuestro turismo y sobre todo del pintxopote!</p>
+<img alt="Premio" src="wp_er.png"/>
+</div>
+<script>
+    // Función para iniciar el quiz
+    function startQuiz() {
+        document.getElementById('intro').classList.remove('active');
+        document.getElementById('quiz').classList.add('active');
+    }
 
+    // Función para verificar respuestas
+    function checkAnswers() {
+        const answers = document.querySelectorAll('input[type="radio"]:checked');
+        const totalQuestions = document.querySelectorAll('.question').length;
+
+        if (answers.length < totalQuestions) {
+            // Mostrar sección de "No respondidas"
+            document.getElementById('quiz').classList.remove('active');
+            document.getElementById('notAnswered').style.display = "block";
+        } else {
+            const correctAnswers = Array.from(answers).filter(input => input.value === "correcto");
+            const incorrectAnswers = totalQuestions - correctAnswers.length; // Calcular los fallos
+
+            if (correctAnswers.length === totalQuestions) {
+                // Mostrar resultados si todas son correctas
+                document.getElementById('quiz').classList.remove('active');
+                document.getElementById('result').classList.add('active');
+            } else {
+                // Mostrar sección de "Respuestas incorrectas" con el conteo de fallos
+                document.getElementById('quiz').classList.remove('active');
+                document.getElementById('wrongAnswer').style.display = "block";
+                document.getElementById('wrongAnswerMessage').innerText = `Has cometido ${incorrectAnswers} fallo(s), pero estás de suerte, por ser tu cumpleaños puedes volver a intentarlo.`;
+            }
+        }
+    }
+
+    // Función para reintentar desde "No respondidas" o "Respuestas incorrectas"
+    function retryQuiz() {
+        document.getElementById('notAnswered').style.display = "none";
+        document.getElementById('wrongAnswer').style.display = "none";
+        document.getElementById('quiz').classList.add('active');
+    }
+
+    // Función para volver a la introducción
+    function goToIntro() {
+        document.getElementById('quiz').classList.remove('active');
+        document.getElementById('result').classList.remove('active');
+        document.getElementById('notAnswered').style.display = "none";
+        document.getElementById('wrongAnswer').style.display = "none";
+        document.getElementById('intro').classList.add('active');
+    }
+
+    // Función para volver a las preguntas
+    function goToQuiz() {
+        document.getElementById('intro').classList.remove('active');
+        document.getElementById('result').classList.remove('active');
+        document.getElementById('notAnswered').style.display = "none";
+        document.getElementById('wrongAnswer').style.display = "none";
+        document.getElementById('quiz').classList.add('active');
+    }
 </script>
+<div id="notAnswered" style="display:none; text-align: center;">
+<img alt="No todas las preguntas respondidas" src="stop.png" style="max-width: 100%; height: auto; margin-bottom: 20px;"/>
+<p>No seas tramposa, tienes que contestar a todas las preguntas si quieres el premio.</p>
+<button class="btn" onclick="retryQuiz()">Reintentar</button>
+</div>
+<div id="wrongAnswer" style="display:none; text-align: center;">
+<img alt="Respuesta incorrecta" src="fallo.jpg" style="max-width: 100%; height: auto; margin-bottom: 20px;"/>
+<p id="wrongAnswerMessage"></p>
+<button class="btn" onclick="retryQuiz()">Reintentar</button>
+</div>
 </body>
 </html>
