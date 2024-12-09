@@ -13,6 +13,94 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: linear-gradient(135deg, #6a1b9a, #4527a0); /* Degradado morado */
+            color: #000;
+        }
+        #intro, #quiz, #result { background: linear-gradient(135deg, #ff5252, #ff1744);
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            background: linear-gradient(135deg, #ff5252, #ff1744); /* Fondo degradado rojo */
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border: 5px solid #ffca28; /* Borde amarillo */
+        }
+        #intro h1, #result h2 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4b0082;
+            text-shadow: 2px 2px 5px rgba(255, 202, 40, 0.7); /* Efecto de brillo */
+        }
+        #intro p, #result p, .question p {
+            font-size: 1.2em;
+            color: #000;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background: #ffca28; /* Amarillo */
+            color: #4b0082; /* Morado oscuro */
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #ffd54f; /* Amarillo más claro */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff9c4; /* Amarillo muy claro */
+            border-radius: 10px;
+            border: 2px solid #ffca28;
+        }
+        .question p {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #4b0082;
+        }
+        input[type="radio"] { color: black; font-weight: bold; color: black;
+            margin-right: 10px;
+        }
+
+        #intro h1, #result h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2em;
+            color: #4b2e83;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+        #intro p, #result p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        #intro, #result {
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        #intro img, #result img {
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             background-color: #87CEEB; /* Fondo azul */
         }
         #intro, #quiz, #result {
@@ -46,13 +134,19 @@
     <!-- Pantalla de Introducción -->
     <div id="intro" class="active">
         <img src="wp_er.png" alt="Imagen de Introducción">
-        <h1>¡Bienvenido al Quiz de Harry Potter!</h1>
+        <h1>Felicidades Eva!</h1><p>Desde Lozano experience queremos acompañarte en este día tan especial para ti. Sabemos lo que te encanta jugar y nosotros queremos jugar contigo. Te proponemos un reto y si lo superas, puede que tengas algún premio! Suerte!</p>
         <p>Pon a prueba tus conocimientos sobre el mundo mágico.</p>
         <button class="btn" onclick="startQuiz()">Comenzar</button>
     </div>
 
     <!-- Quiz -->
     <div id="quiz">
+
+        <!-- Botón para volver a la introducción -->
+        <button class="btn" onclick="goToIntro()">Volver a la Introducción</button>
+        <!-- Botón para volver a las preguntas -->
+        <button class="btn" onclick="goToQuiz()">Volver a las Preguntas</button>
+
         <h1>Harry Potter Quiz</h1>
         <div class="question">
             <p><strong>1. ¿Cuál es el patronus de Harry Potter?</strong></p>
@@ -80,7 +174,13 @@
 
     <!-- Mensaje Final -->
     <div id="result">
-        <h2>¡Correcto! Has respondido a todo correctamente.</h2>
+
+        <!-- Botón para volver a la introducción -->
+        <button class="btn" onclick="goToIntro()">Volver a la Introducción</button>
+        <!-- Botón para volver a las preguntas -->
+        <button class="btn" onclick="goToQuiz()">Volver a las Preguntas</button>
+
+        <h2>Zorionak Evitxu!</h2><p>Ahi va la hostia, que manera de acertar pues! Te invitamos a un fin de semana por Bilbao y alrededores (algunos los llaman España) para que puedas disfrutar de nuestro turismo y sobre todo del pintxopote!</p>
         <img src="wp_er.png" alt="Premio">
     </div>
 
@@ -106,6 +206,21 @@
                 alert("Algunas respuestas son incorrectas. Inténtalo de nuevo.");
             }
         }
-    </script>
+    
+        // Función para volver a la introducción
+        function goToIntro() {
+            document.getElementById('quiz').classList.remove('active');
+            document.getElementById('result').classList.remove('active');
+            document.getElementById('intro').classList.add('active');
+        }
+        
+        // Función para volver a las preguntas
+        function goToQuiz() {
+            document.getElementById('intro').classList.remove('active');
+            document.getElementById('result').classList.remove('active');
+            document.getElementById('quiz').classList.add('active');
+        }
+
+</script>
 </body>
 </html>
