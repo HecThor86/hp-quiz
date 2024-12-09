@@ -13,10 +13,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: 'wp_er.png'; /* Imagen de fondo */
-            background-size: cover; /* Ajusta la imagen para que ocupe todo el fondo */
-            background-position: center; /* Centra la imagen */
-            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-image: url('stars-background.jpg'); /* Ruta de la imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: white;
             text-shadow: 1px 1px 2px black;
         }
@@ -24,7 +24,7 @@
             display: none;
             text-align: center;
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para legibilidad */
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente para mejor legibilidad */
             padding: 20px;
             border-radius: 10px;
             max-width: 600px;
@@ -51,3 +51,70 @@
         }
     </style>
 </head>
+<body>
+    <!-- Pantalla de Introducción -->
+    <div id="intro" class="active">
+        <img src="wp_er.png" alt="Imagen de Introducción">
+        <h1>¡Bienvenido al Quiz de Harry Potter!</h1>
+        <p>Pon a prueba tus conocimientos sobre el mundo mágico.</p>
+        <button class="btn" onclick="startQuiz()">Comenzar</button>
+    </div>
+
+    <!-- Quiz -->
+    <div id="quiz">
+        <h1>Harry Potter Quiz</h1>
+        <div class="question">
+            <p><strong>1. ¿Cuál es el patronus de Harry Potter?</strong></p>
+            <input type="radio" name="q1" value="incorrecto"> Un lobo<br>
+            <input type="radio" name="q1" value="incorrecto"> Un zorro<br>
+            <input type="radio" name="q1" value="correcto"> Un ciervo<br>
+            <input type="radio" name="q1" value="incorrecto"> Un águila<br>
+        </div>
+        <div class="question">
+            <p><strong>2. ¿Cómo se llama el banco mágico de los magos?</strong></p>
+            <input type="radio" name="q2" value="incorrecto"> Ollivanders<br>
+            <input type="radio" name="q2" value="correcto"> Gringotts<br>
+            <input type="radio" name="q2" value="incorrecto"> Honeydukes<br>
+            <input type="radio" name="q2" value="incorrecto"> Hogwarts<br>
+        </div>
+        <div class="question">
+            <p><strong>3. ¿Cómo se llama el mapa que muestra a las personas en Hogwarts?</strong></p>
+            <input type="radio" name="q3" value="correcto"> El Mapa del Merodeador<br>
+            <input type="radio" name="q3" value="incorrecto"> El Diario de Tom Riddle<br>
+            <input type="radio" name="q3" value="incorrecto"> El Espejo de Oesed<br>
+            <input type="radio" name="q3" value="incorrecto"> La Piedra Filosofal<br>
+        </div>
+        <button class="btn" onclick="checkAnswers()">Enviar respuestas</button>
+    </div>
+
+    <!-- Mensaje Final -->
+    <div id="result">
+        <h2>¡Correcto! Has respondido a todo correctamente.</h2>
+        <img src="wp_er.png" alt="Premio">
+    </div>
+
+    <script>
+        // Función para iniciar el quiz
+        function startQuiz() {
+            document.getElementById('intro').classList.remove('active');
+            document.getElementById('quiz').classList.add('active');
+        }
+
+        // Función para verificar respuestas
+        function checkAnswers() {
+            const answers = document.querySelectorAll('input[type="radio"]:checked');
+            if (answers.length < 3) {
+                alert("Por favor, responde a todas las preguntas.");
+                return;
+            }
+            const correctAnswers = Array.from(answers).filter(input => input.value === "correcto");
+            if (correctAnswers.length === 3) {
+                document.getElementById("quiz").classList.remove("active");
+                document.getElementById("result").classList.add("active");
+            } else {
+                alert("Algunas respuestas son incorrectas. Inténtalo de nuevo.");
+            }
+        }
+    </script>
+</body>
+</html>
