@@ -21,20 +21,20 @@
             color: #000;
             color: #111;
         }
-        #intro, #quiz, #result { background: #76A6A6);
+        #intro, #quiz, #result { background: linear-gradient(135deg, #ff5252, #ff1744);
             text-align: center;
             width: 80%;
             max-width: 800px;
-            background: #76A6A6; /* Fondo degradado rojo */
+            background: linear-gradient(135deg, #ff5252, #ff1744); /* Fondo degradado rojo */
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border: #F2B66D; /* Borde amarillo */
+            border: 5px solid #ffca28; /* Borde amarillo */
         }
         #intro h1, #result h2 {
             font-size: 2.5em;
             font-weight: bold;
-            color: #76A6A6;
+            color: #4b0082;
             text-shadow: 2px 2px 5px rgba(255, 202, 40, 0.7); /* Efecto de brillo */
         }
         #intro p, #result p, .question p {
@@ -59,7 +59,7 @@
         .question {
             margin-bottom: 20px;
             padding: 15px;
-            background: #F2B66D; /* Amarillo muy claro */
+            background: #fff9c4; /* Amarillo muy claro */
             border-radius: 10px;
             border: 2px solid #ffca28;
         }
@@ -140,11 +140,11 @@
     width: 100%;
     max-width: 800px;
     margin: auto;
-    background: #76A6A6;
+    background: linear-gradient(135deg, #ff5252, #ff1744);
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border: 5px solid #F2B66D;
+    border: 5px solid #ffca28;
     color: #4b0082;
 }
 #notAnswered p, #wrongAnswer p {
@@ -202,9 +202,9 @@
 <!-- Pantalla de Introducción -->
 <div class="active" id="intro" style="max-height: none; overflow-y: visible;">
 <img alt="Imagen de Introducción" src="logo.png"/>
-<h1>¡Felicidades Eva!</h1><p>Desde Lozano Experience queremos acompañarte en este día tan especial. Sabemos lo que te encanta jugar y por eso te proponemos este reto. Si lo superas, ¡puede que te aguarde algún premio!</p>
+<h1>Felicidades Eva!</h1><p>Desde Lozano Experience queremos acompañarte en este día tan especial. Sabemos lo que te encanta jugar y por eso te proponemos este reto. Si lo superas, puede que te aguarde algún premio!</p>
 <p>Para poder ganar la recompensa deberás acertar TODAS las preguntas.</p>
-<p>¡Suerte!</p>
+<p>¡Suerte!.</p>
 <button class="btn" onclick="startQuiz()">Comenzar</button>
 </div>
 <!-- Quiz -->

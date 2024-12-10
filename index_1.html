@@ -14,27 +14,23 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('fondo.jpg'); /* Se usa la imagen de fondo */
-            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
-            background-repeat: no-repeat; /* Evita que la imagen se repita */
-            background-position: center; /* Centra la imagen */
+            background: linear-gradient(135deg, #6a1b9a, #313c3f); /* Degradado morado */
             color: #000;
-            color: #111;
         }
-        #intro, #quiz, #result { background: #76A6A6);
+        #intro, #quiz, #result { background: linear-gradient(135deg, #ff5252, #ff1744);
             text-align: center;
             width: 80%;
             max-width: 800px;
-            background: #76A6A6; /* Fondo degradado rojo */
+            background: linear-gradient(135deg, #ff5252, #ff1744); /* Fondo degradado rojo */
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border: #F2B66D; /* Borde amarillo */
+            border: 5px solid #ffca28; /* Borde amarillo */
         }
         #intro h1, #result h2 {
             font-size: 2.5em;
             font-weight: bold;
-            color: #76A6A6;
+            color: #4b0082;
             text-shadow: 2px 2px 5px rgba(255, 202, 40, 0.7); /* Efecto de brillo */
         }
         #intro p, #result p, .question p {
@@ -59,7 +55,7 @@
         .question {
             margin-bottom: 20px;
             padding: 15px;
-            background: #F2B66D; /* Amarillo muy claro */
+            background: #fff9c4; /* Amarillo muy claro */
             border-radius: 10px;
             border: 2px solid #ffca28;
         }
@@ -140,11 +136,11 @@
     width: 100%;
     max-width: 800px;
     margin: auto;
-    background: #76A6A6;
+    background: linear-gradient(135deg, #ff5252, #ff1744);
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border: 5px solid #F2B66D;
+    border: 5px solid #ffca28;
     color: #4b0082;
 }
 #notAnswered p, #wrongAnswer p {
@@ -202,13 +198,13 @@
 <!-- Pantalla de Introducción -->
 <div class="active" id="intro" style="max-height: none; overflow-y: visible;">
 <img alt="Imagen de Introducción" src="logo.png"/>
-<h1>¡Felicidades Eva!</h1><p>Desde Lozano Experience queremos acompañarte en este día tan especial. Sabemos lo que te encanta jugar y por eso te proponemos este reto. Si lo superas, ¡puede que te aguarde algún premio!</p>
+<h1>Felicidades Eva!</h1><p>Desde Lozano Experience queremos acompañarte en este día tan especial. Sabemos lo que te encanta jugar y por eso te proponemos este reto. Si lo superas, puede que te aguarde algún premio!</p>
 <p>Para poder ganar la recompensa deberás acertar TODAS las preguntas.</p>
-<p>¡Suerte!</p>
+<p>¡Suerte!.</p>
 <button class="btn" onclick="startQuiz()">Comenzar</button>
 </div>
 <!-- Quiz -->
-<div id="quiz" style="max-height: none; overflow-y: visible;"><div class="question"><p>1. ¿Cuál es la mejor casa de Howgarts?</p><label><input name="q1" type="radio" value="incorrecto"/> Gryffindor</label><label><input name="q1" type="radio" value="incorrecto"/> Slytherin</label><label><input name="q1" type="radio" value="correcto"/> Ravenclaw</label><label><input name="q1" type="radio" value="incorrecto"/> Hufflepuff</label></div><div class="question"><p>2. ¿Cuál es la canción favorita de tu novio?</p><label><input name="q2" type="radio" value="incorrecto"/> ¿Quién maneja mi barca?</label><label><input name="q2" type="radio" value="incorrecto"/> Si yo tuviera una escoba</label><label><input name="q2" type="radio" value="correcto"/> Numb</label><label><input name="q2" type="radio" value="incorrecto"/> Baby Shark</label></div><div class="question"><p>3. ¿Cuántos Legos más caben en casa?</p><label><input name="q3" type="radio" value="incorrecto"/> 2</label><label><input name="q3" type="radio" value="correcto"/> ¡No tenemos sitio!</label><label><input name="q3" type="radio" value="incorrecto"/> 35</label><label><input name="q3" type="radio" value="incorrecto"/> 17</label></div><div class="question"><p>4. ¿Qué temperatura hacía en el concierto de Grande Amore?</p><label><input name="q4" type="radio" value="correcto"/> 36ºC</label><label><input name="q4" type="radio" value="incorrecto"/> 38ºC</label><label><input name="q4" type="radio" value="incorrecto"/> 34ºC</label><label><input name="q4" type="radio" value="incorrecto"/> La misma que en el sol</label></div><div class="question"><p>5. ¿Cuál es tu pueblo favorito de Burgos?</p><label><input name="q5" type="radio" value="incorrecto"/> Madrigalejo del Monte</label><label><input name="q5" type="radio" value="incorrecto"/> Cubillo del Campo</label><label><input name="q5" type="radio" value="incorrecto"/> Castrillo Matajudíos</label><label><input name="q5" type="radio" value="correcto"/> Melgar de Fernamental</label></div><div class="question"><p>6. Completa la frase: Te miro y no te…</p><label><input name="q6" type="radio" value="correcto"/> Veo</label><label><input name="q6" type="radio" value="incorrecto"/> Oigo</label><label><input name="q6" type="radio" value="incorrecto"/> Huelo</label><label><input name="q6" type="radio" value="incorrecto"/> Siento</label></div><div class="question"><p>7. ¿Cuál es la capital de Tuvalu?</p><label><input name="q7" type="radio" value="incorrecto"/> Port Vila</label><label><input name="q7" type="radio" value="incorrecto"/> Yaren</label><label><input name="q7" type="radio" value="correcto"/> Funafuti</label><label><input name="q7" type="radio" value="incorrecto"/> Apia</label></div><div class="question"><p>8. Adivina el país</p><img alt="9. Adivina el país" src="pais.png"/><label><input name="q8" type="radio" value="correcto"/> Bolivia</label><label><input name="q8" type="radio" value="incorrecto"/> Paraguay</label><label><input name="q8" type="radio" value="incorrecto"/> Perú</label><label><input name="q8" type="radio" value="incorrecto"/> Guatemala</label></div><div class="question"><p>9. Adivina el Wheretaken</p><img alt="10. Adivina el wheretaken" src="wheretaken.jpg"/><label><input name="q9" type="radio" value="incorrecto"/> Kenia</label><label><input name="q9" type="radio" value="correcto"/> Zimbaue</label><label><input name="q9" type="radio" value="incorrecto"/> Mozambique</label><label><input name="q9" type="radio" value="incorrecto"/> Gabón</label></div><div class="question"><p>10. ¿Cuál es el camino más corto entre Chad y Mozambique?</p><label><input name="q10" type="radio" value="incorrecto"/> Nigeria, Camerún, República Centroafricana, República Democrática del Congo </label><label><input name="q10" type="radio" value="incorrecto"/> Nigeria, Camerún, República Democrática del Congo, Zambia</label><label><input name="q10" type="radio" value="incorrecto"/> Gabón, Angola, Namibia, Zambia </label><label><input name="q10" type="radio" value="correcto"/>Chad, República Centroafricana, República Democrática del Congo, Zambia </label></div>
+<div id="quiz" style="max-height: none; overflow-y: visible;"><div class="question"><p>1. ¿Cuál es la mejor casa de Howgarts?</p><label><input name="q1" type="radio" value="incorrecto"/> Gryffindor</label><label><input name="q1" type="radio" value="incorrecto"/> Slytherin</label><label><input name="q1" type="radio" value="correcto"/> Ravenclaw</label><label><input name="q1" type="radio" value="incorrecto"/> Hufflepuff</label></div><div class="question"><p>2. ¿Cuál es la canción favorita de tu novio?</p><label><input name="q2" type="radio" value="incorrecto"/> ¿Quién maneja mi barca?</label><label><input name="q2" type="radio" value="incorrecto"/> Si yo tuviera una escoba</label><label><input name="q2" type="radio" value="correcto"/> Numb</label><label><input name="q2" type="radio" value="incorrecto"/> Baby Shark</label></div><div class="question"><p>3. ¿Cómo te definirías?</p><label><input name="q3" type="radio" value="incorrecto"/> Imbécil</label><label><input name="q3" type="radio" value="incorrecto"/> Flipada</label><label><input name="q3" type="radio" value="incorrecto"/> Fucking crack</label><label><input name="q3" type="radio" value="correcto"/> Gilipollas</label></div><div class="question"><p>4. ¿Cuántos Legos más caben en casa?</p><label><input name="q4" type="radio" value="incorrecto"/> 2</label><label><input name="q4" type="radio" value="correcto"/> ¡No tenemos sitio!</label><label><input name="q4" type="radio" value="incorrecto"/> 35</label><label><input name="q4" type="radio" value="incorrecto"/> 17</label></div><div class="question"><p>5. ¿Qué temperatura hacía en el concierto de Grande Amore?</p><label><input name="q5" type="radio" value="correcto"/> 36ºC</label><label><input name="q5" type="radio" value="incorrecto"/> 38ºC</label><label><input name="q5" type="radio" value="incorrecto"/> 34ºC</label><label><input name="q5" type="radio" value="incorrecto"/> La misma que en el sol</label></div><div class="question"><p>6. ¿Cuál es tu pueblo favorito de Burgos?</p><label><input name="q6" type="radio" value="incorrecto"/> Madrigalejo del Monte</label><label><input name="q6" type="radio" value="incorrecto"/> Cubillo del Campo</label><label><input name="q6" type="radio" value="incorrecto"/> Castrillo Matajudíos</label><label><input name="q6" type="radio" value="correcto"/> Melgar de Fernamental</label></div><div class="question"><p>7. Completa la frase: Te miro y no te…</p><label><input name="q7" type="radio" value="correcto"/> Veo</label><label><input name="q7" type="radio" value="incorrecto"/> Oigo</label><label><input name="q7" type="radio" value="incorrecto"/> Huelo</label><label><input name="q7" type="radio" value="incorrecto"/> Siento</label></div><div class="question"><p>8. ¿Cuál es la capital de Tuvalu?</p><label><input name="q8" type="radio" value="incorrecto"/> Port Vila</label><label><input name="q8" type="radio" value="incorrecto"/> Yaren</label><label><input name="q8" type="radio" value="correcto"/> Funafuti</label><label><input name="q8" type="radio" value="incorrecto"/> Apia</label></div><div class="question"><p>9. Adivina el país</p><img alt="9. Adivina el país" src="pais.png"/><label><input name="q9" type="radio" value="correcto"/> Bolivia</label><label><input name="q9" type="radio" value="incorrecto"/> Paraguay</label><label><input name="q9" type="radio" value="incorrecto"/> Perú</label><label><input name="q9" type="radio" value="incorrecto"/> Guatemala</label></div><div class="question"><p>10. Adivina el wheretaken</p><img alt="10. Adivina el wheretaken" src="wheretaken.jpg"/><label><input name="q10" type="radio" value="incorrecto"/> Kenia</label><label><input name="q10" type="radio" value="correcto"/> Zimbaue</label><label><input name="q10" type="radio" value="incorrecto"/> Mozambique</label><label><input name="q10" type="radio" value="incorrecto"/> Gabón</label></div>
 <button class="btn" onclick="checkAnswers()" style="display: block; margin: 10px auto;">Enviar respuestas</button>
 <!-- Botón para volver a la introducción -->
 <button class="btn" onclick="goToIntro()">Volver a la Introducción</button>
@@ -220,7 +216,7 @@
 <!-- Botón para volver a las preguntas -->
 <button class="btn" onclick="goToQuiz()">Volver a las Preguntas</button>
 <h2>Zorionak Evitxu!</h2>
-<p>Ahí va la hostia, qué manera de acertar pues!</p>
+<p>Ahi va la hostia, qué manera de acertar pues!</p>
 <p>Has ganado un fin de semana en Bilbao y alrededores (algunos los llaman España) para que puedas disfrutar de su turismo y sobre todo del pintxopote!</p>
 <img alt="Premio" src="final.png"/>
 </div>
